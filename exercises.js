@@ -10,14 +10,12 @@ maxOfThree(10, 20, 30);
 function max(a, b){
     "use strict";
    if(b > a){
-    //  console.log(b);
      return b;
    }else{
-      // console.log(a);
-     return a;
+    return a;
    }
 }
-// console.assert(max(10, 20) == 20);
+console.assert(max(10, 20) == 20);
 
 // ---------------------
 // Define a function maxOfThree() that takes three numbers as arguments and returns the largest of them.
@@ -36,7 +34,7 @@ function maxOfThree(a, b, c){
       return a;
     }
 }
-// console.assert(maxOfThree(10, 20, 30) == 30);
+console.assert(maxOfThree(10, 20, 30) == 30);
 
 // ---------------------
 // Write a function that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false otherwise.
@@ -78,30 +76,34 @@ function rovarspraket(phrase){
 sum([1, 2, 3, 4]);
 function sum(array){
     "use strict";
-    var previousValue = ("");
-    var currentValue = ("");
-    var currentIndex = ("");
-    reduce(previousValue, currentValue, currentIndex, array);
-    {
-      return previousValue + currentValue;}
-    }
+    return array.reduce(function(previousValue, currentValue){
+      return previousValue + currentValue;
+    });
+  }
 console.assert(sum([1, 2, 3, 4]) == 10);
 
 
-
-function multiply(){
+multiply([1,2,3,4]);
+function multiply(array){
     "use strict";
-    //...
+  return array.reduce(function(previousValue, currentValue){
+    return previousValue * currentValue;
+    console.log(array);
+  });
 }
+console.assert(multiply([1, 2, 3, 4]) == 24);
 
 // ---------------------
 // Define a function reverse() that computes the reversal of a string. For example, reverse("jag testar") should return the string "ratset gaj".
 // ---------------------
 
-function reverse(){
+reverse ("jag testar")
+function reverse(phrase){
     "use strict";
-    //...
+    var phraseReverse = phrase.split("").reverse().join("");
+    return phraseReverse;
 }
+console.assert(reverse("jag testar"));
 
 // ---------------------
 // Write a function findLongestWord() that takes an array of words and returns the length of the longest one.
@@ -109,17 +111,37 @@ function reverse(){
 
 function findLongestWord(words){
     "use strict";
-    //...
+    var array = words.split(" ");
+    var final = "";
+    var update = "";
+    for (var i=0; i<array.length; i++){
+
+      var selected = array[i];
+      var wordLength = update.length;
+      if (selected.length > wordLength){
+        update = array[i];
+
+      } final = update;
+    }
+    return final.length;
 }
+console.assert(findLongestWord("where is the longest word")== 7);
 
 // ---------------------
 // Write a function filterLongWords() that takes an array of words and an integer i and returns the array of words that are longer than i.
 // ---------------------
-
+var chosenWords = [];
 function filterLongWords(words, i){
     "use strict";
-    //...
+    for (var i=0; i<words.length; i++){
+      if (words[i].length >i){
+        chosenWords.push(words[i]);}
+    }
+    return chosenWords;
 }
+console.log(filterLongWords(["awesome", "has", "is", "superstitious"], 4));
+
+// console.assert(filterLongWords(["awesome", "has", "is", "superstitious"], 4) == ["awesome", "superstitious"]);
 
 // ---------------------
 // Write a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
@@ -127,5 +149,15 @@ function filterLongWords(words, i){
 
 function charFreq(string){
     "use strict";
-    //...
+    var freq = {};
+    for (var i=0; i<string.length; i++) {
+      var character = string.charAt(i);
+      if(freq[character]){
+        freq[character]++;
+      }else{
+        freq[character]=1;
+      }
+    }
+    return freq;
 }
+console.assert(charFreq("abbabcbdbabdbdbabababcbcbab"));
